@@ -159,20 +159,26 @@
         <div class="container">
             <h2 class="section-title reveal">Flight Manuals (The Newsletter)</h2>
             <p class="section-description reveal">75+ articles exploring India's startup ecosystem - 1,200+ subscribers</p>
+        </div>
+        <div class="article-carousel-container">
+            <button class="article-scroll-btn article-scroll-prev" aria-label="Previous article"><i class="fas fa-chevron-left"></i></button>
             <div class="article-grid">
                 <div class="article-card substack-embed-card reveal reveal-stagger-1">
-                    <div class="substack-post-embed"><p lang="en">Biting off More than We Could Chew? by Indianaut</p><p>A Guide to the Chinese Boycott</p><a data-post-link href="https://indianaut.substack.com/p/biting-off-more-than-we-could-chew">Read on Substack</a></div><script async src="https://substack.com/embedjs/embed.js" charset="utf-8"></script>
-                </div>
-                <div class="article-card substack-embed-card reveal reveal-stagger-2">
-                    <div class="substack-post-embed"><p lang="en">India's Cryptocurrency Conundrum by Indianaut</p><p>On the Legal Status of Cryptocurrency in India</p><a data-post-link href="https://indianaut.substack.com/p/indias-cryptocurrency-conundrum">Read on Substack</a></div><script async src="https://substack.com/embedjs/embed.js" charset="utf-8"></script>
-                </div>
-                <div class="article-card substack-embed-card reveal reveal-stagger-3">
-                    <div class="substack-post-embed"><p lang="en">India's Tryst with Privacy by Indianaut</p><p>Searching for Privacy in a Digital Age</p><a data-post-link href="https://indianaut.substack.com/p/indias-tryst-with-privacy">Read on Substack</a></div><script async src="https://substack.com/embedjs/embed.js" charset="utf-8"></script>
-                </div>
-                <div class="article-card substack-embed-card reveal reveal-stagger-4">
                     <div class="substack-post-embed"><p lang="en">The Great Indian IP Opportunity by Indianaut</p><a data-post-link href="https://indianaut.substack.com/p/the-great-indian-ip-opportunity">Read on Substack</a></div><script async src="https://substack.com/embedjs/embed.js" charset="utf-8"></script>
                 </div>
+                <div class="article-card substack-embed-card reveal reveal-stagger-2">
+                    <div class="substack-post-embed"><p lang="en">Biting off More than We Could Chew? by Indianaut</p><p>A Guide to the Chinese Boycott</p><a data-post-link href="https://indianaut.substack.com/p/biting-off-more-than-we-could-chew">Read on Substack</a></div><script async src="https://substack.com/embedjs/embed.js" charset="utf-8"></script>
+                </div>
+                <div class="article-card substack-embed-card reveal reveal-stagger-3">
+                    <div class="substack-post-embed"><p lang="en">India's Cryptocurrency Conundrum by Indianaut</p><p>On the Legal Status of Cryptocurrency in India</p><a data-post-link href="https://indianaut.substack.com/p/indias-cryptocurrency-conundrum">Read on Substack</a></div><script async src="https://substack.com/embedjs/embed.js" charset="utf-8"></script>
+                </div>
+                <div class="article-card substack-embed-card reveal reveal-stagger-4">
+                    <div class="substack-post-embed"><p lang="en">India's Tryst with Privacy by Indianaut</p><p>Searching for Privacy in a Digital Age</p><a data-post-link href="https://indianaut.substack.com/p/indias-tryst-with-privacy">Read on Substack</a></div><script async src="https://substack.com/embedjs/embed.js" charset="utf-8"></script>
+                </div>
             </div>
+            <button class="article-scroll-btn article-scroll-next" aria-label="Next article"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="container">
             <div class="button-container">
                 <a href="https://indianaut.substack.com/" target="_blank" class="primary-btn">
                     <i class="fas fa-newspaper"></i>
@@ -452,6 +458,27 @@
             document.querySelectorAll('.reveal').forEach(element => {
                 observer.observe(element);
             });
+        });
+
+        // Article Carousel Scroll Buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const articleGrid = document.querySelector('.article-grid');
+            const prevBtn = document.querySelector('.article-scroll-prev');
+            const nextBtn = document.querySelector('.article-scroll-next');
+            if (!articleGrid) return;
+
+            const scrollAmount = 380;
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    articleGrid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                });
+            }
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    articleGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                });
+            }
         });
 
         // Audio Player Close Button
