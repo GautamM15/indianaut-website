@@ -646,6 +646,14 @@ main,
   border-radius: var(--radius-sm);
   overflow: hidden;
 }
+/* Substack's embed.js gives the iframe a fixed 300px width, which overflows
+   and clips inside a narrower card on mobile. Force it to fill the card so
+   the embed's own responsive layout reflows to fit. */
+.article-card .substack-post-embed iframe {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
 .article-card .substack-post-embed p {
   color: var(--text-dim);
   font-family: var(--font-body);
@@ -751,6 +759,8 @@ main,
   text-align: center;
 }
 .footer-copy { color: var(--text-faint); font-size: 0.85rem; }
+.footer-credit { color: var(--text-faint); font-size: 0.85rem; margin-top: 6px; opacity: 0.85; }
+.footer-credit em { font-style: italic; color: var(--text-dim); }
 
 /* ==========================================================================
    Atmosphere — film grain + cursor torch
@@ -991,6 +1001,8 @@ main,
   .section { padding: var(--sp-xl) 0; }
   .carousel { padding-inline: calc(50vw - 50% + var(--sp-md)); }
   .carousel::before, .carousel::after { width: 24px; }
+  /* Give the Substack embed room and trim padding so it isn't cramped. */
+  .carousel--advance .article-card { width: min(360px, 88vw); padding: var(--sp-md); }
   .about-grid { grid-template-columns: 1fr; justify-items: center; text-align: center; }
   .about-photo { width: 180px; }
   .about-text p { max-width: 60ch; }

@@ -502,10 +502,11 @@
       btn.classList.toggle('is-playing', playing);
       btn.classList.toggle('is-awaiting', !!awaiting);
       btn.setAttribute('aria-pressed', playing ? 'true' : 'false');
-      var text = awaiting ? 'Play theme' : (playing ? 'Pause theme' : 'Play theme');
+      var text = playing ? 'Pause theme' : 'Play theme';
       btn.setAttribute('aria-label', text);
       btn.title = text;
-      label.textContent = playing ? 'Theme' : 'Play theme';
+      // Standard, constant label; the icon (triangle vs bars) carries state.
+      label.textContent = 'Theme';
     };
     paint(false, false);
     document.body.appendChild(btn);
@@ -558,34 +559,36 @@
       audioLevel = 0;
     });
 
-    var armed = false;
-    var arm = function () {
-      if (armed) return;
-      armed = true;
-      var go = function () {
-        audio.play().then(function () {
-          paint(true, false);
-        }).catch(function () {});
-        off();
-      };
-      var off = function () {
-        ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function (ev) {
-          window.removeEventListener(ev, go);
-        });
-      };
-      ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function (ev) {
-        window.addEventListener(ev, go, { once: true, passive: true });
-      });
+    /* Autoplay is armed to start on the first page gesture. The button
+       handles its OWN taps (via click), so armGo ignores gestures that
+       originate on it — otherwise a tap would both arm-play and then
+       toggle-pause on the same interaction (the mobile "does nothing" bug). */
+    var armEvents = ['pointerdown', 'keydown', 'touchstart', 'scroll'];
+    var armGo = function (e) {
+      if (e && e.target && btn.contains(e.target)) return;
+      startPlaying();
     };
+    function arm() { armEvents.forEach(function (ev) { window.addEventListener(ev, armGo, { passive: true }); }); }
+    function disarm() { armEvents.forEach(function (ev) { window.removeEventListener(ev, armGo); }); }
+
+    function startPlaying() {
+      write(KEY_OFF, '0');
+      disarm();
+      var pr = audio.play();
+      if (pr && typeof pr.then === 'function') {
+        pr.then(function () { paint(true, false); })
+          .catch(function () { paint(false, true); arm(); });
+      }
+    }
+    function stopPlaying() {
+      write(KEY_OFF, '1');
+      disarm();
+      audio.pause();
+      paint(false, false);
+    }
 
     btn.addEventListener('click', function () {
-      if (audio.paused) {
-        write(KEY_OFF, '0');
-        audio.play().catch(function () {});
-      } else {
-        write(KEY_OFF, '1');
-        audio.pause();
-      }
+      if (audio.paused) startPlaying(); else stopPlaying();
     });
 
     // Honour an explicit pause from a previous page; otherwise try to start.
