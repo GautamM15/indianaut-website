@@ -11,9 +11,9 @@
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var EASE_OUT_EXPO = function (p) { return p >= 1 ? 1 : 1 - Math.pow(2, -10 * p); };
 
-  /* Shared 0..1 loudness of the Indianaut theme, published by the theme
-     player's analyser and consumed by the starfield so the stars breathe
-     with the music. Stays 0 whenever the theme is not playing. */
+  /* Audio-reactivity hook, kept as an inert 0. The Web Audio analyser that
+     once drove it was removed because tapping the media element broke
+     playback on some browsers; the starfield no longer pulses to the theme. */
   var audioLevel = 0;
 
   /* ---------------------------------------------------------------------
@@ -511,53 +511,16 @@
     paint(false, false);
     document.body.appendChild(btn);
 
-    /* Web Audio analyser -> audioLevel, so the starfield breathes with the
-       theme. Built lazily on first play (an AudioContext created before a
-       gesture starts suspended) and wired through to the speakers, since a
-       MediaElementSource re-routes the element's output. */
-    var analyser = null;
-    var bins = null;
-    var meterRaf = null;
-    function buildAnalyser() {
-      if (analyser) return;
-      var Ctx = window.AudioContext || window.webkitAudioContext;
-      if (!Ctx) return;
-      try {
-        var actx = new Ctx();
-        var src = actx.createMediaElementSource(audio);
-        analyser = actx.createAnalyser();
-        analyser.fftSize = 64;
-        analyser.smoothingTimeConstant = 0.8;
-        src.connect(analyser);
-        analyser.connect(actx.destination);
-        bins = new Uint8Array(analyser.frequencyBinCount);
-        if (actx.state === 'suspended') actx.resume();
-      } catch (e) {
-        analyser = null; // unsupported or already-tapped element: fail quiet
-      }
-    }
-    function meter() {
-      if (!analyser || audio.paused) { audioLevel = 0; meterRaf = null; return; }
-      analyser.getByteFrequencyData(bins);
-      var sum = 0;
-      for (var i = 0; i < bins.length; i++) sum += bins[i];
-      var avg = (sum / bins.length) / 255;
-      audioLevel += (Math.min(1, avg * 1.6) - audioLevel) * 0.25;
-      meterRaf = requestAnimationFrame(meter);
-    }
-
+    /* Audio plays through the element's own native output. We deliberately do
+       NOT tap it with a Web Audio AnalyserNode: createMediaElementSource
+       re-routes the element into the audio graph, which is a common cause of
+       muted or broken playback (especially on iOS/mobile). Reliable music
+       matters more than the starfield pulsing to it. */
     audio.addEventListener('timeupdate', function () {
       write(KEY_TIME, String(audio.currentTime));
     });
-    audio.addEventListener('play', function () {
-      paint(true, false);
-      buildAnalyser();
-      if (!meterRaf) meterRaf = requestAnimationFrame(meter);
-    });
-    audio.addEventListener('pause', function () {
-      paint(false, false);
-      audioLevel = 0;
-    });
+    audio.addEventListener('play', function () { paint(true, false); });
+    audio.addEventListener('pause', function () { paint(false, false); });
 
     /* Autoplay is armed to start on the first page gesture. The button
        handles its OWN taps (via click), so armGo ignores gestures that

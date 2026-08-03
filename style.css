@@ -105,10 +105,10 @@ button:focus-visible,
 .eyebrow {
   display: block;
   font-family: var(--font-display);
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   font-weight: 500;
   line-height: 1.2;
-  letter-spacing: 0.36em;
+  letter-spacing: 0.34em;
   text-transform: uppercase;
   color: var(--accent);
 }
@@ -426,6 +426,7 @@ main,
   animation: rise-in var(--dur-slow) var(--ease-out-expo) 0.7s forwards;
 }
 .hero-photo {
+  position: relative;
   width: 128px;
   height: 128px;
   border-radius: 50%;
@@ -436,7 +437,11 @@ main,
   transform: scale(0.94);
   animation: bloom-in 1s var(--ease-out-expo) 0.2s forwards;
 }
-.hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+/* The portrait is a full-body illustration. Rather than object-fit + a
+   transform scale (which upscales an already-shrunk bitmap and blurs it),
+   render the image oversized so the browser samples the source at full
+   resolution, then clip to the circle and position on the face. */
+.hero-photo img { position: absolute; left: 50%; top: -6%; width: 188%; max-width: none; height: auto; transform: translateX(-50%); }
 
 /* ==========================================================================
    Scroll reveal system
@@ -673,6 +678,7 @@ main,
   align-items: start;
 }
 .about-photo {
+  position: relative;
   width: 100%;
   aspect-ratio: 1;
   border-radius: 50%;
@@ -680,7 +686,7 @@ main,
   border: 1px solid var(--hairline-strong);
   box-shadow: 0 20px 60px -24px rgba(61, 90, 241, 0.45);
 }
-.about-photo img { width: 100%; height: 100%; object-fit: cover; }
+.about-photo img { position: absolute; left: 50%; top: -6%; width: 188%; max-width: none; height: auto; transform: translateX(-50%); }
 .about-text p { color: var(--text-dim); max-width: 68ch; margin-bottom: var(--sp-md); }
 .about-text p:last-child { margin-bottom: 0; }
 .host-link { color: var(--text); font-weight: 600; }
@@ -695,7 +701,8 @@ main,
 }
 
 /* About page: bio / connect / coming next */
-.bio-section .container { max-width: 780px; }
+/* Bio uses the standard container so "Who I Am" lines up with the sections
+   below it; the reading measure is held by .bio-text max-width instead. */
 .bio-text p { color: var(--text-dim); margin-bottom: var(--sp-md); }
 .bio-text p:last-child { margin-bottom: 0; }
 
