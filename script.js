@@ -687,6 +687,40 @@
   }
 
   /* ---------------------------------------------------------------------
+     Work index filter (About page). Each row lists its domains in
+     data-domains; the chips subset the list. No-op on pages without it.
+  --------------------------------------------------------------------- */
+  function initWorkFilter() {
+    var group = document.querySelector('.work-filter');
+    var index = document.querySelector('.work-index');
+    if (!group || !index) return;
+    var chips = [].slice.call(group.querySelectorAll('.filter-chip'));
+    var rows = [].slice.call(index.querySelectorAll('.work-row'));
+    var count = document.querySelector('.work-count');
+
+    function apply(key) {
+      var shown = 0;
+      rows.forEach(function (row) {
+        var domains = (row.getAttribute('data-domains') || '').split(/\s+/);
+        var match = key === 'all' || domains.indexOf(key) !== -1;
+        row.classList.toggle('is-hidden', !match);
+        if (match) shown++;
+      });
+      chips.forEach(function (c) {
+        var on = c.getAttribute('data-filter') === key;
+        c.classList.toggle('is-active', on);
+        c.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      if (count) count.textContent = shown + (shown === 1 ? ' entry' : ' entries');
+    }
+
+    chips.forEach(function (c) {
+      c.addEventListener('click', function () { apply(c.getAttribute('data-filter')); });
+    });
+    apply('all');
+  }
+
+  /* ---------------------------------------------------------------------
      Boot
   --------------------------------------------------------------------- */
   function init() {
@@ -702,6 +736,7 @@
     initThemePlayer();
     initScrollRocket();
     initAtmosphere();
+    initWorkFilter();
 
     /* Cinematic arrival: the field converges and the logo resolves, once per
        session. Any input cuts it short, and reduced motion skips it. */

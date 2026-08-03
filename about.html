@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gautam Marwah — Indianaut</title>
-  <meta name="description" content="Gautam Marwah builds at the intersection of curiosity and product. Host of Indianaut, an archive of 45,000+ listens, 75+ essays, and 1,200+ subscribers.">
+  <meta name="description" content="Gautam Marwah. I invest in enterprise AI at Kae Capital, started Indianaut, and build across AI, product, investing, startups, and geekdom.">
 
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="apple-touch-icon" href="favicon.ico">
@@ -13,13 +13,13 @@
   <meta property="og:url" content="https://indianaut.in/about.html">
   <link rel="canonical" href="https://indianaut.in/about.html">
   <meta property="og:title" content="Gautam Marwah — Indianaut">
-  <meta property="og:description" content="Gautam Marwah builds at the intersection of curiosity and product. Host of Indianaut, an archive of 45,000+ listens, 75+ essays, and 1,200+ subscribers.">
+  <meta property="og:description" content="I invest in enterprise AI at Kae Capital, started Indianaut, and build across AI, product, investing, startups, and geekdom.">
   <meta property="og:image" content="https://indianaut.in/logo.png">
   <meta property="og:site_name" content="Indianaut">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Gautam Marwah — Indianaut">
-  <meta name="twitter:description" content="Builder, and host of Indianaut.">
+  <meta name="twitter:description" content="Builder across AI, product, investing, startups, and geekdom.">
   <meta name="twitter:image" content="https://indianaut.in/logo.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,7 +56,10 @@
           <img src="GautamMarwah-Photo.PNG" alt="Gautam Marwah">
         </div>
         <h1 class="hero-name">Gautam Marwah</h1>
-        <p class="hero-role">Builder, and host of Indianaut.</p>
+        <p class="hero-role">I invest in enterprise AI at Kae Capital, and build things on my own.</p>
+        <p class="domain-line" aria-label="AI, Product, Investing, Startups, Geekdom">
+          <span>AI</span><span>Product</span><span>Investing</span><span>Startups</span><span>Geekdom</span>
+        </p>
         <p class="scroll-cue">Scroll to explore</p>
       </div>
     </section>
@@ -65,13 +68,172 @@
     <section class="section bio-section" id="bio">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow reveal reveal--fade">The Work</p>
-          <h2 class="reveal reveal--fade">A curiosity, made into a catalogue</h2>
+          <p class="eyebrow reveal reveal--fade">Who I Am</p>
         </div>
         <div class="bio-text reveal">
-          <p>Gautam Marwah builds at the intersection of curiosity and product. As the host of Indianaut, he sat down for on-the-record conversations with the founders, operators, investors, and policy shapers building India's startup ecosystem, asking the questions that don't make the headlines.</p>
-          <p>What began as a podcast grew into an archive of 45,000+ listens, 75+ essays, and 1,200+ subscribers. This page is where the rest of his work, from projects and code to writing, will live.</p>
+          <p>I'm Gautam Marwah. I studied B.A. History (Hons.) at Delhi University, then spent seven years moving between fintech, product, venture capital, and building things on my own, usually landing in rooms I wasn't the obvious pick for.</p>
+          <p>In March 2021 I became the first product hire for Pine Labs' online payments team. After two years there I did a PGP in Technology and Business Management at Masters' Union, finishing in June 2023.</p>
+          <p>I now work at Kae Capital, an early-stage VC fund, where I invest in enterprise AI and run the firm's AI operating layer. I also started Indianaut, this platform, because I wanted to understand India's startup ecosystem by talking to the people building it.</p>
+          <p>Right now most of my free time goes into building on AI: shipping small tools, running local pipelines, reading frontier research. Outside of that I read fantasy and sci-fi, play on the PS5 and Nintendo Switch 2, build LEGO sets, and play tennis again after a 15-year gap.</p>
         </div>
+      </div>
+    </section>
+
+    <!-- Selected work -->
+    <section class="section" id="work">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow reveal reveal--fade">Selected Work</p>
+          <h2 class="reveal reveal--fade">Things I've built</h2>
+        </div>
+
+        <div class="work-controls reveal">
+          <div class="work-filter" role="group" aria-label="Filter work by domain">
+            <button type="button" class="filter-chip is-active" data-filter="all" aria-pressed="true">All</button>
+            <button type="button" class="filter-chip" data-filter="investing" aria-pressed="false">Investing</button>
+            <button type="button" class="filter-chip" data-filter="ai" aria-pressed="false">AI</button>
+            <button type="button" class="filter-chip" data-filter="product" aria-pressed="false">Product</button>
+            <button type="button" class="filter-chip" data-filter="community" aria-pressed="false">Community</button>
+            <button type="button" class="filter-chip" data-filter="writing" aria-pressed="false">Writing</button>
+            <button type="button" class="filter-chip" data-filter="recognition" aria-pressed="false">Recognition</button>
+          </div>
+          <p class="work-count" aria-live="polite"></p>
+        </div>
+
+        <ul class="work-index reveal">
+          <li class="work-row" data-domains="ai investing">
+            <span class="work-date">Aug 2026</span>
+            <div class="work-main">
+              <h3 class="work-title">PortfolioBrain</h3>
+              <p class="work-desc">Kae Capital's private knowledge platform for its portfolio founders.</p>
+              <div class="work-tags"><span class="work-tag">AI</span><span class="work-tag">Investing</span></div>
+            </div>
+          </li>
+
+          <li class="work-row" data-domains="ai">
+            <span class="work-date">Jul 2026</span>
+            <div class="work-main">
+              <h3 class="work-title">Paper-club Skill</h3>
+              <p class="work-desc">A Claude skill I built for reading frontier AI papers. It began as a reading list ordered so each paper sets up the next; now I paste in a paper and it tells me whether it's worth my time, explains the mechanism in plain language, turns the equations I can't read into code I can, flags what would break in production, and scopes a small version I can build on my own GPU.</p>
+              <div class="work-tags"><span class="work-tag">AI</span></div>
+            </div>
+          </li>
+
+          <li class="work-row has-link" data-domains="writing">
+            <span class="work-date">Jun 2026</span>
+            <div class="work-main">
+              <h3 class="work-title">The Great Indian IP Opportunity</h3>
+              <p class="work-desc">A long-form piece on India's opportunity in intellectual property.</p>
+              <div class="work-tags"><span class="work-tag">Writing</span></div>
+            </div>
+            <a class="work-link" href="https://kae-capital.com/blog/the-great-indian-ip-opportunity/" target="_blank" rel="noopener" aria-label="Read The Great Indian IP Opportunity"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          </li>
+
+          <li class="work-row has-link" data-domains="ai">
+            <span class="work-date">May 2026</span>
+            <div class="work-main">
+              <h3 class="work-title">Shaadigram</h3>
+              <p class="work-desc">An automated AI pipeline that culls and curates thousands of wedding photos down to a final album. It runs entirely on a local GPU, with no cloud APIs and no per-photo cost.</p>
+              <div class="work-tags"><span class="work-tag">AI</span></div>
+            </div>
+            <a class="work-link" href="https://github.com/GautamM15/shaadigram" target="_blank" rel="noopener" aria-label="View Shaadigram on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+          </li>
+
+          <li class="work-row has-link" data-domains="investing">
+            <span class="work-date">Mar 2026</span>
+            <div class="work-main">
+              <h3 class="work-title">Investment in Grapevine</h3>
+              <p class="work-desc">Kae Capital's investment in Grapevine.</p>
+              <div class="work-tags"><span class="work-tag">Investing</span></div>
+            </div>
+            <a class="work-link" href="https://kae-capital.com/blog/why-we-invested-in-grapevine/" target="_blank" rel="noopener" aria-label="Read why Kae Capital invested in Grapevine"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          </li>
+
+          <li class="work-row has-link" data-domains="investing writing">
+            <span class="work-date">Sep 2025</span>
+            <div class="work-main">
+              <h3 class="work-title">India Deeptech Report 2025</h3>
+              <p class="work-desc">Kae Capital's 2025 report on India's deeptech landscape.</p>
+              <div class="work-tags"><span class="work-tag">Investing</span><span class="work-tag">Writing</span></div>
+            </div>
+            <a class="work-link" href="https://kae-capital.com/report/india-deeptech-2025/" target="_blank" rel="noopener" aria-label="Read the India Deeptech Report 2025"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          </li>
+
+          <li class="work-row" data-domains="recognition">
+            <span class="work-date">Oct 2024</span>
+            <div class="work-main">
+              <h3 class="work-title">Club President of the Year</h3>
+              <p class="work-desc">Masters' Union.</p>
+              <div class="work-tags"><span class="work-tag">Recognition</span></div>
+            </div>
+          </li>
+
+          <li class="work-row" data-domains="recognition">
+            <span class="work-date">Dec 2023</span>
+            <div class="work-main">
+              <h3 class="work-title">Creatorpreneur Grant</h3>
+              <p class="work-desc">INR 1.4 lakh grant, Masters' Union.</p>
+              <div class="work-tags"><span class="work-tag">Recognition</span></div>
+            </div>
+          </li>
+
+          <li class="work-row" data-domains="recognition">
+            <span class="work-date">Jun 2023</span>
+            <div class="work-main">
+              <h3 class="work-title">Masters' Union Scholarship</h3>
+              <p class="work-desc">INR 10.5+ lakh scholarship.</p>
+              <div class="work-tags"><span class="work-tag">Recognition</span></div>
+            </div>
+          </li>
+
+          <li class="work-row" data-domains="product recognition">
+            <span class="work-date">FY22 &amp; FY23</span>
+            <div class="work-main">
+              <h3 class="work-title">Star Performer of the Quarter</h3>
+              <p class="work-desc">First PM at Pine Labs to win it twice (Q1 FY22, Q1 FY23).</p>
+              <div class="work-tags"><span class="work-tag">Product</span><span class="work-tag">Recognition</span></div>
+            </div>
+          </li>
+
+          <li class="work-row has-link" data-domains="product">
+            <span class="work-date">Oct 2021</span>
+            <div class="work-main">
+              <h3 class="work-title">Plural by Pine Labs</h3>
+              <p class="work-desc">Launched Plural, Pine Labs' online payments stack.</p>
+              <div class="work-tags"><span class="work-tag">Product</span></div>
+            </div>
+            <a class="work-link" href="https://www.producthunt.com/products/plural#plural" target="_blank" rel="noopener" aria-label="View Plural by Pine Labs on Product Hunt"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          </li>
+
+          <li class="work-row has-link" data-domains="community">
+            <span class="work-date">2019&ndash;2024</span>
+            <div class="work-main">
+              <h3 class="work-title">Indianaut Podcast</h3>
+              <p class="work-desc">32 episodes, 45,000+ views and listens, produced end to end.</p>
+              <div class="work-tags"><span class="work-tag">Community</span></div>
+            </div>
+            <a class="work-link" href="https://www.youtube.com/@indianaut" target="_blank" rel="noopener" aria-label="Watch the Indianaut podcast on YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+          </li>
+
+          <li class="work-row has-link" data-domains="community">
+            <span class="work-date">2019&ndash;2024</span>
+            <div class="work-main">
+              <h3 class="work-title">Indianaut Newsletter</h3>
+              <p class="work-desc">Scaled to 1,200+ subscribers on Substack.</p>
+              <div class="work-tags"><span class="work-tag">Community</span></div>
+            </div>
+            <a class="work-link" href="https://indianaut.substack.com/" target="_blank" rel="noopener" aria-label="Read the Indianaut newsletter on Substack"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          </li>
+
+          <li class="work-row" data-domains="community">
+            <span class="work-date">2019&ndash;2024</span>
+            <div class="work-main">
+              <h3 class="work-title">Indianaut Team</h3>
+              <p class="work-desc">Built and led a 7-person team delivering research, content strategy, and product consulting across 5 client accounts.</p>
+              <div class="work-tags"><span class="work-tag">Community</span></div>
+            </div>
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -84,36 +246,19 @@
         </div>
         <div class="reveal">
           <div class="connect-actions">
-            <a href="https://www.linkedin.com/in/gautam-marwah/" target="_blank" rel="noopener" class="btn btn-primary">
+            <a href="https://www.linkedin.com/in/gautam-marwah/" target="_blank" rel="noopener" class="btn btn-ghost">
               <i class="fab fa-linkedin" aria-hidden="true"></i>
-              <span>Connect on LinkedIn</span>
+              <span>LinkedIn</span>
             </a>
-            <a href="index.html" class="about-cta u-link">← Back to Indianaut</a>
-          </div>
-          <!-- TODO: add a direct email here if desired -->
-        </div>
-      </div>
-    </section>
-
-    <!-- Coming next -->
-    <section class="section" id="coming-next">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow reveal reveal--fade">What's Next</p>
-          <h2 class="reveal reveal--fade">Coming next</h2>
-        </div>
-        <div class="tiles-grid stagger">
-          <div class="tile reveal">
-            <h3>Projects</h3>
-            <span class="tile-tag">Coming soon</span>
-          </div>
-          <div class="tile reveal">
-            <h3>GitHub</h3>
-            <span class="tile-tag">Coming soon</span>
-          </div>
-          <div class="tile reveal">
-            <h3>Writing</h3>
-            <span class="tile-tag">Coming soon</span>
+            <a href="https://github.com/GautamM15" target="_blank" rel="noopener" class="btn btn-ghost">
+              <i class="fab fa-github" aria-hidden="true"></i>
+              <span>GitHub</span>
+            </a>
+            <a href="mailto:gautamarwah@gmail.com" class="btn btn-ghost">
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+              <span>Email</span>
+            </a>
+            <a href="index.html" class="about-cta u-link">&larr; Back to Indianaut</a>
           </div>
         </div>
       </div>
